@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528224301) do
+ActiveRecord::Schema.define(version: 20150529214454) do
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "message_id"
     t.string   "addres_1"
     t.string   "addres_2"
     t.string   "city"
@@ -22,17 +21,22 @@ ActiveRecord::Schema.define(version: 20150528224301) do
     t.string   "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "message_id"
   end
 
+  add_index "addresses", ["message_id"], name: "index_addresses_on_message_id"
+
   create_table "messages", force: :cascade do |t|
-    t.string   "user_id"
     t.string   "to_address"
     t.string   "to_name"
     t.text     "message"
     t.boolean  "is_public"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
