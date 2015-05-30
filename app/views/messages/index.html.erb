@@ -1,1 +1,9 @@
 <h1>Hello, this is the list of messages</h1>
+
+	<% @messages.each do |message| %>
+	<ul>
+		<li>Message</li>
+		<li><%= message.msg %></li>
+		<li><%= link_to 'Show', message_path(message) %></li>
+	</ul>
+	<% end %>
