@@ -1,0 +1,15 @@
+<p>
+	<strong>To:</strong>
+	<%= @message.to_name %>
+</p>
+
+<p>
+	<strong>Message:</strong>
+	<%= @message.msg %>
+</p>
+
+
+<p>
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>	
+</p>
