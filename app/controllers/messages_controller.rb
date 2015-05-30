@@ -22,7 +22,19 @@ class MessagesController < ApplicationController
 		@message = Message.find(params[:id])
 	end
 
+	def edit
+		@message = Message.find(params[:id])
+	end
 
+	def update
+		@message = Message.find(params[:id])
+
+		if @message.update(message_params)
+			redirect_to @message
+		else
+			render "edit"
+		end
+	end
 
 
 private
