@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
 	def index
-		@messages = Message.all
+		@messages = Message.where(is_public: true)
 	end
 
 	def new
