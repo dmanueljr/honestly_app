@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+	include SessionsHelper
+
 	def index
 		@messages = Message.where(is_public: true)
 	end
@@ -10,6 +12,8 @@ class MessagesController < ApplicationController
 
 	def create
 		@message = Message.new(message_params)
+ 		#captures user_id when creating message		
+ 		@message.user_id = current_user.id if current_user 
 
 		if @message.save
 			redirect_to @message
@@ -43,9 +47,11 @@ class MessagesController < ApplicationController
 		redirect_to messages_path
 	end
 
+
 private
+
 	def message_params
-		params.require(:message).permit(:to_name, :msg, :is_public)
+		params.require(:message).permit(:to_name, :msg, :is_public, :user_id)
 	end
 
 end
