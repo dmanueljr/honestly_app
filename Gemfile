@@ -47,9 +47,6 @@ gem 'omniauth-facebook'
 #google login
 gem 'omniauth-google-oauth2', '~> 0.2.6'
 
-#twitter login
-gem 'omniauth-twitter', '~> 1.2.0'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
