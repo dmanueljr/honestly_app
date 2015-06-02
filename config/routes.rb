@@ -19,6 +19,14 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+
+
+  #omniauth
+  get "/auth/:provider/callback" => "sessions#create"
+  get 'auth/logout' => 'sessions#destroy'
+  get 'sessions/show'
+
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

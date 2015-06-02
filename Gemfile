@@ -34,6 +34,23 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#omniauth
+gem 'omniauth'
+gem 'figaro'
+
+#github
+gem 'omniauth-github'
+
+#facebook login
+gem 'omniauth-facebook'
+
+#google login
+gem 'omniauth-google-oauth2', '~> 0.2.6'
+
+#twitter login
+gem 'omniauth-twitter', '~> 1.2.0'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
