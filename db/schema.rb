@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150529233833) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string   "addres_1"
     t.string   "addres_2"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150529233833) do
     t.integer  "message_id"
   end
 
-  add_index "addresses", ["message_id"], name: "index_addresses_on_message_id"
+  add_index "addresses", ["message_id"], name: "index_addresses_on_message_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.string   "to_name"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150529233833) do
     t.string   "msg"
   end
 
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -46,4 +49,6 @@ ActiveRecord::Schema.define(version: 20150529233833) do
     t.string   "password_digest"
   end
 
+  add_foreign_key "addresses", "messages"
+  add_foreign_key "messages", "users"
 end
