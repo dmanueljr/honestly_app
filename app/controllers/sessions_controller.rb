@@ -5,13 +5,13 @@
 #   def create
 # 	user = User.find_by(email: params[:login][:email])
 
-# 	if user && user.authenticate(params[:login][:password])
-# 		#log them in (set a cookie)
-# 		session[:user_id] = user.id.to_s
-# 		redirect_to users_path
-# 	else
-# 		render :new
-# 	end
+	# if user && user.authenticate(params[:login][:password])
+	# 	#log them in (set a cookie)
+	# 	session[:user_id] = user.id.to_s
+	# 	redirect_to users_path
+	# else
+	# 	render :new
+	# end
 #   end
 
 #   def destroy
@@ -32,13 +32,38 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-	    @auth = request.env['omniauth.auth']
-	    session['auth'] = @auth
-	    redirect_to sessions_show_path
+	
+		user = User.find_by(email: params[:login][:email])
+
+		if user && user.authenticate(params[:login][:password])
+			#log them in (set a cookie)
+			session[:user_id] = user.id.to_s
+			redirect_to user_path(user)
+		else
+			render :new
+		end
 	end
 
+		# session['auth'] = request.env['omniauth.auth']
+	 #    redirect_to sessions_show_path
+	
+
+	    # user = User.find_by(email: params[:login][:email])
+		
+		# else
+		# 	user = User.find_by(email: params[:login][:password])
+
+		# 	if user && user.authenticate(params[:login][:password])
+		# 		session[:user_id] = user.id.to_s
+		# 	else
+
+
 	def destroy
-	    session['auth'] = nil
+		if session['auth']
+	    	session['auth'] = nil
+	    else
+	    	session.delete(:user_id)
+	    end
 	    redirect_to root_path
 	end
 end
