@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529233833) do
+ActiveRecord::Schema.define(version: 20150604015103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "addres_1"
-    t.string   "addres_2"
     t.string   "city"
     t.string   "state"
     t.string   "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "message_id"
+    t.string   "address_1"
+    t.string   "address_2"
   end
 
   add_index "addresses", ["message_id"], name: "index_addresses_on_message_id", using: :btree
