@@ -42,10 +42,12 @@ class SessionsController < ApplicationController
 		else
 			render :new
 		end
+
+	    # @auth = request.env['omniauth.auth']
+	    # session['auth'] = @auth
+	    # redirect_to sessions_show_path
 	end
 
-		# session['auth'] = request.env['omniauth.auth']
-	 #    redirect_to sessions_show_path
 	
 
 	    # user = User.find_by(email: params[:login][:email])
