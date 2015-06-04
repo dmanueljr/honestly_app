@@ -1,0 +1,12 @@
+<h4>Your are sending <%= @to_address %></h4>
+
+	<% @addresses.each do |address| %>
+	<address>
+		<%= address.address_1 %><br>
+		<%= address.address_2 if address.address_2 %><br>
+		<%= address.city %>, <%= address.state.upcase %> <%= address.zip_code %><br>
+		<%= link_to 'Show', address_path(address) %> <%= link_to 'Edit', edit_address_path(address) %> <%= link_to 'Delete', address_path(address),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+	</address>
+	<% end %>

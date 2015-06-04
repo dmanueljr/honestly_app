@@ -1,0 +1,8 @@
+<h1>You're sending this message to:</h1>
+
+
+<address>
+	<%= @address.address_1 %><br>
+	<%= @address.address_2 if @address.address_2 %><br>
+	<%= @address.city %>, <%= @address.state.upcase %> <%= @address.zip_code %>
+</address>

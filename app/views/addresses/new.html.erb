@@ -1,0 +1,35 @@
+<h1>Send To:</h1>
+
+<%= form_for @address do |f| %>
+ 
+	<p>
+	    <%= f.label :address_1 %><br>
+	    <%= f.text_field :address_1 %>
+  	</p>
+
+	<p>
+	    <%= f.label :address_2 %><br>
+	    <%= f.text_field :address_2 %>
+  	</p>
+ 
+	<p>
+	    <%= f.label :city %><br>
+	    <%= f.text_field :city %>
+  	</p>
+
+	<p>
+	    <%= f.label :state %><br>
+	    <%= f.text_field :state %>
+  	</p>
+
+  	<p>
+	    <%= f.label :zip_code %><br>
+	    <%= f.text_field :zip_code %>
+  	</p>
+
+  	<p>
+    	<%= f.submit %>
+  	</p>
+ 
+<% end %>
+
