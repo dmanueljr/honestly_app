@@ -10,8 +10,12 @@
 <h1>All Users</h1>
 
 <% @users.each do |user| %>
-	<%= user.first_name %>
-	<%= user.last_name %>
+<ul>
+	<li><%= user.first_name.capitalize %> <%= user.last_name.capitalize %> <%= link_to "Show", user_path(user) %> <%= link_to "Edit", edit_user_path(user) %> <%= link_to "Delete", user_path(user),
+		method: :delete,
+		data: {confirm: "Are you sure?"} %></li>
+</ul>
+
 	
 
 <% end %>
