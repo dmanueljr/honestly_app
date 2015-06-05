@@ -18,7 +18,8 @@ class MessagesController < ApplicationController
 		if @message.save
 			redirect_to @message
 		else
-			render "new"
+			flash.now[:error] = @message.errors.full_messages
+  			render "new"
 		end
 	end	
 
