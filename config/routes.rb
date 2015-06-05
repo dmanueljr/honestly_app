@@ -28,11 +28,11 @@ Rails.application.routes.draw do
 
 
   #addresses routes
-  get "/messages/:message_id/addresses" => "addresses#index", as: :addresses
+  get "/messages/:message_id/addresses" => "addresses#index", as: :message_addresses
   post "/messages/:message_id/addresses" => "addresses#create"
-  get "/messages/:message_id/addresses/new" => "addresses#new"
+  get "/messages/:message_id/addresses/new" => "addresses#new", as: :new_message_address
   get "/messages/:message_id/addresses/:id/edit" => "addresses#edit", as: :edit_address
-  get "/messages/:message_id/addresses/:id" => "addresses#show", as: :address
+  get "/messages/:message_id/addresses/:id" => "addresses#show", as: :message_address
   patch "/messages/:message_id/addresses/:id" => "addresses#update"
   delete "/messages/:message_id/addresses/:id" => "addresses#destroy"
 
