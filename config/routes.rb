@@ -28,13 +28,13 @@ Rails.application.routes.draw do
 
 
   #addresses routes
-  get "/messages/:id/addresses" => "addresses#index", as: :addresses
-  post "/messages/:id/addresses" => "addresses#create"
-  get "/messages/:id/addresses/new" => "addresses#new"
-  get "/messages/:id/addresses/:id/edit" => "addresses#edit", as: :edit_address
-  get "/messages/:id/addresses/:id" => "addresses#show", as: :address
-  patch "/messages/:id/addresses/:id" => "addresses#update"
-  delete "/messages/:id/addresses/:id" => "addresses#destroy"
+  get "/messages/:message_id/addresses" => "addresses#index", as: :addresses
+  post "/messages/:message_id/addresses" => "addresses#create"
+  get "/messages/:message_id/addresses/new" => "addresses#new"
+  get "/messages/:message_id/addresses/:id/edit" => "addresses#edit", as: :edit_address
+  get "/messages/:message_id/addresses/:id" => "addresses#show", as: :address
+  patch "/messages/:message_id/addresses/:id" => "addresses#update"
+  delete "/messages/:message_id/addresses/:id" => "addresses#destroy"
 
 
   # Example of regular route:
