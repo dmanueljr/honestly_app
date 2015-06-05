@@ -30,7 +30,7 @@ class AddressesController < ApplicationController
     @address.message = Message.find(params[:id])  
   	
   	if @address.save
-  		redirect_to @address
+  		redirect_to @address.message
   	else
   		render "new"
   	end
