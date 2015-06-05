@@ -62,7 +62,7 @@ class AddressesController < ApplicationController
   	@address = get_message.addresses.find(params[:id])
 
   	if @address.update(address_params)
-  		redirect_to @address
+  		redirect_to message_address_path
   	else
   		render "edit"
   	end
@@ -75,7 +75,7 @@ class AddressesController < ApplicationController
 
   	@address = get_message.addresses.find(params[:id])
   	@address.destroy
-  	redirect_to addresses_path
+  	redirect_to message_addresses_path
 
   end
 
