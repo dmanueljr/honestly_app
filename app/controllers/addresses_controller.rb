@@ -4,10 +4,11 @@ class AddressesController < ApplicationController
 
   def index
 
-  	@addresses = Address.all
+  	@addresses = get_message.addresses.all
     
     #user prompt for multiple address destinations
     @to_address = "this card to this address: "
+
     if @addresses.count > 1
       @to_address = "a card to each of the following addresses: "
     end
@@ -18,17 +19,17 @@ class AddressesController < ApplicationController
 
   def new
 
-  	@address = Address.new
+  	@address = get_message.addresses.build
   
   end
 
 
 
   def create
-    @address = Address.new(address_params)
+    @address = get_message.addresses.build(address_params)
   	
     #captures message_id when adding address
-    @address.message = Message.find(params[:id])
+    # @address.message = Message.find(params[:id])
   	
   	if @address.save
       redirect_to @address.message
@@ -42,7 +43,7 @@ class AddressesController < ApplicationController
 
   def show
 
-  	@address = Address.find(params[:id])
+  	@address = get_message.addresses.find(params[:id])
 
   end
 
@@ -50,7 +51,7 @@ class AddressesController < ApplicationController
 
   def edit
 
-  	@address = Address.find(params[:id])
+  	@address = get_message.addresses.find(params[:id])
  
   end
 
@@ -58,7 +59,7 @@ class AddressesController < ApplicationController
 
   def update
 
-  	@address = Address.find(params[:id])
+  	@address = get_message.addresses.find(params[:id])
 
   	if @address.update(address_params)
   		redirect_to @address
@@ -72,7 +73,7 @@ class AddressesController < ApplicationController
 
   def destroy
 
-  	@address = Address.find(params[:id])
+  	@address = get_message.addresses.find(params[:id])
   	@address.destroy
   	redirect_to addresses_path
 
@@ -86,6 +87,8 @@ private
 		params.require(:address).permit(:address_1, :address_2, :city, :state, :zip_code)
 	end
 
-
+  def get_message
+    @message = Message.find(params[:message_id])
+  end
 
 end
