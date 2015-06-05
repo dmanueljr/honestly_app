@@ -1,9 +1,9 @@
 class MessagesController < ApplicationController
 
-	include SessionsHelper
+	before_action :authorized?
 
 	def index
-		@messages = Message.where(is_public: true)
+		@messages = Message.where(user_id: current_user.id) if current_user
 	end
 
 	def new
