@@ -3,6 +3,8 @@
 
 <address>
 	<%= @address.address_1 %><br>
-	<%= @address.address_2 if @address.address_2 %><br>
-	<%= @address.city %>, <%= @address.state.upcase %> <%= @address.zip_code %>
+	<%= @address.address_2 %><br>
+	<%= @address.city %>, 
+	<%= @address.state.upcase %> 
+	<%= @address.zip_code %><br>
 </address>
