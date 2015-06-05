@@ -16,3 +16,14 @@
               data: { confirm: "Are you sure?" } %> 
 <%= link_to "Back", messages_path %>	
 </p>
+
+
+<%= @message.addresses.each do |address| %>
+
+<address>
+	<%= address.address_1 %><br>
+	<%= address.address_2 %><br>
+	<%= address.city %>, <%= address.state.upcase %> <%= address.zip_code %> <br>	
+</address>
+
+<% end %>

@@ -25,15 +25,16 @@ class AddressesController < ApplicationController
 
 
   def create
-  	@address = Address.new(address_params)
-  	#captures message_id when adding address
-    @address.message = Message.find(params[:id])  
+    @address = Address.new(address_params)
+  	
+    #captures message_id when adding address
+    @address.message = Message.find(params[:id])
   	
   	if @address.save
-  		redirect_to @address.message
+      redirect_to @address.message
   	else
-  		render "new"
-  	end
+      render "new"
+    end
 
   end
 
