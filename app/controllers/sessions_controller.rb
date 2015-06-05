@@ -1,26 +1,3 @@
-# class SessionsController < ApplicationController
-#   def new
-#   end
-
-#   def create
-# 	user = User.find_by(email: params[:login][:email])
-
-	# if user && user.authenticate(params[:login][:password])
-	# 	#log them in (set a cookie)
-	# 	session[:user_id] = user.id.to_s
-	# 	redirect_to users_path
-	# else
-	# 	render :new
-	# end
-#   end
-
-#   def destroy
-# 		session.delete(:user_id)
-# 		redirect_to login_path
-#   end
-# end
-
-
 class SessionsController < ApplicationController
 	
 	def new
@@ -47,18 +24,6 @@ class SessionsController < ApplicationController
 	    # session['auth'] = @auth
 	    # redirect_to sessions_show_path
 	end
-
-	
-
-	    # user = User.find_by(email: params[:login][:email])
-		
-		# else
-		# 	user = User.find_by(email: params[:login][:password])
-
-		# 	if user && user.authenticate(params[:login][:password])
-		# 		session[:user_id] = user.id.to_s
-		# 	else
-
 
 	def destroy
 		if session['auth']
