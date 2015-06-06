@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 	include SessionsHelper
 
 	def authorized?
-		redirect_to root_path unless current_user
+		redirect_to sign_in_path unless current_user
 	end
 
 end
