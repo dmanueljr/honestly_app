@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 	before_action :authorized?
 
 	def index
-		@messages = Message.where(user_id: current_user.id) if current_user
+		@messages = get_user_message if current_user
 	end
 
 	def new
@@ -24,11 +24,11 @@ class MessagesController < ApplicationController
 	end	
 
 	def show
-		@message = Message.find(params[:id])
+		@message = get_user_message.find(params[:id])
 	end
 
 	def edit
-		@message = Message.find(params[:id])
+		@message = get_user_message.find(params[:id])
 	end
 
 	def update
@@ -54,5 +54,10 @@ private
 	def message_params
 		params.require(:message).permit(:to_name, :msg, :is_public, :user_id)
 	end
+
+	def get_user_message
+		 Message.where(user_id: current_user.id)
+	end
+
 
 end
