@@ -42,9 +42,9 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   
 
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+  get '/login' => 'sessions#new', as: :sign_up
+  post '/login' => 'sessions#create', as: :sign_in
+  delete '/logout' => 'sessions#destroy', as: :sign_out
 
 
   #omniauth
