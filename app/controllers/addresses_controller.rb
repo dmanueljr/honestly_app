@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   
-
+  before_action :authorized?
 
   def index
 
@@ -34,6 +34,7 @@ class AddressesController < ApplicationController
   	if @address.save
       redirect_to @address.message
   	else
+      flash.now[:error] = @address.errors.full_messages
       render "new"
     end
 
@@ -45,6 +46,10 @@ class AddressesController < ApplicationController
 
   	@address = get_message.addresses.find(params[:id])
 
+    if @address.message.user_id != current_user.id
+      redirect_to messages_path
+    end
+
   end
 
 
@@ -52,7 +57,11 @@ class AddressesController < ApplicationController
   def edit
 
   	@address = get_message.addresses.find(params[:id])
- 
+
+    if @address.message.user_id != current_user.id
+      redirect_to messages_path
+    end
+
   end
 
 
