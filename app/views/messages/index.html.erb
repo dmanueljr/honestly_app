@@ -1,12 +1,3 @@
-<% if current_user %>
-	You are logged in as <%= @current_user.first_name%>
-	<%= link_to "LOG OUT", logout_path, method: :delete %>
-<% else %>
-	<%= link_to "SIGN UP", users_new_path %>
-	<%= link_to "LOG IN", login_path %>
-<% end %> 
-
-
 <h1>Hello, this is the list of public messages</h1>
 
 	<% @messages.each do |message| %>
