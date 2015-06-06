@@ -31,6 +31,6 @@ class SessionsController < ApplicationController
 	    else
 	    	session.delete(:user_id)
 	    end
-	    redirect_to root_path
+	    redirect_to sign_in_path
 	end
 end
