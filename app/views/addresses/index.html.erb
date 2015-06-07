@@ -13,7 +13,7 @@
               class: "btn btn-danger" %>
         <%= link_to 'Edit', edit_address_path(@message, address), class: "btn btn-warning" %> 
 		<%= link_to 'View details', message_address_path(@message, address), class: "btn btn-default" %>	
-		<%= link_to 'Send $3', root_path, class: "btn btn-success" %> 
+		<%= link_to 'Send $3', new_charge_path, class: "btn btn-success" %> 
 	</address>
 	<% end %>
     <%= link_to 'Add an address', new_message_address_path(@message), class: "btn btn-success btn-lg btn-block" %>

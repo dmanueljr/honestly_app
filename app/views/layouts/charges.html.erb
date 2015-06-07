@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>HonestlyApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+	<div class="container-fluid">
+
+	<!-- navbar login header -->
+		<%= render 'layouts/header' %>
+	    
+	    <div class="container-fluid">
+	    	
+	    	<!-- error notification loop -->
+		    <% if flash[:error] %>
+		      <% flash[:error].each do |message| %>
+		        <div class="alert alert-danger" role="alert"><%= message %></div>
+		      <% end %>
+		    <% end %>
+
+		    <!-- message notifications -->
+		    <% if flash[:notice] %>
+		      <div class="alert alert-info" role="alert"><%= flash[:notice] %></div>
+		    <% end %>
+  			<%= yield %>
+
+			<hr>
+			<%= params %>
+			<hr>
+
+	    </div> <!-- content wrapper -->
+
+	</div><!-- main container -->
+
+</body>
+</html>

@@ -35,7 +35,7 @@
 						<address >
 							<%= address.address_1 %><br>
 							<%= address.city %>, <%= address.state.upcase %> <%= address.zip_code %><br><br>
-							<button type="button" class="btn btn-success btn-xs">Send to this address $3</button>	
+							<%= link_to "Send to this address $3", message_address_path(@message, address), class: "btn btn-success btn-xs" %>	
 						</address>
 					<% end %>
 					<hr>
