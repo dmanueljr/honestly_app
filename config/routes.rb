@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root "honest#index"
   get "/public" => "honest#public"
+  get "/how" => "honest#how"
+  get "/contact" => "honest#contact"
 
   #users routes
   get "/users" => "users#index"
