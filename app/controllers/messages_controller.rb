@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
 
 	def index
 		@messages = get_user_message if current_user
+		@message_count = @messages.count
 	end
 
 	def new
@@ -24,11 +25,13 @@ class MessagesController < ApplicationController
 	end	
 
 	def show
-		@message = get_user_message.find(params[:id])
+		@message = Message.find(params[:id])
+		redirect_to public_path unless @message.user == current_user
 	end
 
 	def edit
-		@message = get_user_message.find(params[:id])
+		@message = Message.find(params[:id])
+		redirect_to public_path unless @message.user == current_user
 	end
 
 	def update
@@ -37,6 +40,7 @@ class MessagesController < ApplicationController
 		if @message.update(message_params)
 			redirect_to @message
 		else
+			flash.now[:error] = @message.errors.full_messages
 			render "edit"
 		end
 	end

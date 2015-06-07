@@ -1,20 +1,22 @@
-<% if current_user %>
-	You are logged in as <%= @current_user.first_name%>
-	<%= link_to "LOG OUT", logout_path, method: :delete %>
-<% else %>
-	<%= link_to "SIGN UP", users_new_path %>
-	<%= link_to "LOG IN", login_path %>
-<% end %> 
+<h1>Here are some real messages from our users.</h1>
+	
+	<div class="container-fluid">
 
+		<div class="row">
+    	
+		<% @messages.each do |message| %>
 
-<h1>Hello, this is the list of public messages</h1>
+            <div class="col-md-2">
+              <h4><%= message.to_name %></h4>
+              <p><%= message.msg %></p>
+              <% if message.user == current_user %>
+              	<p><%= link_to 'View details', message_path(message), class: "btn btn-default" %> </p>
+              <% end %>
+	        </div><!--/.col-xs-4-->
 
-	<% @messages.each do |message| %>
-	<ul>
-		<li>Message</li>
-		<li><%= message.msg %></li>
-		<li><%= link_to 'Show', message_path(message) %> <%= link_to 'Edit', edit_message_path(message) %> <%= link_to 'Delete', message_path(message),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></li>
-	</ul>
-	<% end %>
+        <% end %>
+
+        </div><!--/row-->
+
+	</div><!-- /container -->
+

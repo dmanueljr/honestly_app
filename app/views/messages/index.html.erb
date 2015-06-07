@@ -1,11 +1,32 @@
-<h1>Hello, this is the list of public messages</h1>
+<h1>You currently have <%= pluralize(@message_count, "message") %> in your account</h1>
+	
+	<div class="container-fluid">
 
-	<% @messages.each do |message| %>
-	<ul>
-		<li>Message</li>
-		<li><%= message.msg %></li>
-		<li><%= link_to 'Show', message_path(message) %> <%= link_to 'Edit', edit_message_path(message) %> <%= link_to 'Delete', message_path(message),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></li>
-	</ul>
-	<% end %>
+		<div class="row">
+    	
+      <% @messages.each do |message| %> 
+		  <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Message for 
+            <%= message.to_name %> 
+            <% if message.is_public %>
+            <span class="badge">Public</span>
+            <% end %>
+          </h2>
+         </div>
+        <div class="panel-body">
+            <%= message.msg %>
+            <br><hr>
+            <% if message.user == current_user %>
+              <%= link_to 'View details', message_path(message), class: "btn btn-default" %>
+            <% end %>
+        </div>
+      </div>
+      <% end %>
+      <%= link_to 'Create a new message', messages_new_path, class: "btn btn-success btn-lg btn-block" %>
+
+    </div><!--/row-->
+        
+	</div><!-- /container -->
+
+

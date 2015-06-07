@@ -1,24 +1,4 @@
-<%= form_for @message do |f| %>
- 
-	<p>
-	    <%= f.label :to_name %><br>
-	    <%= f.text_field :to_name %>
-  	</p>
- 
-	<p>
-	    <%= f.label :msg %><br>
-	    <%= f.text_area :msg %>
-  	</p>
 
-  	<p>
-	    <%= f.label :is_public %><br>
-	    <%= f.check_box :is_public %>
-  	</p>
- 
-  	<p>
-    	<%= f.submit %>
-  	</p>
- 
-<% end %>
+<h1>Edit this message</h1>
 
-<%= link_to 'Back', messages_path %>
+<%= render "layouts/messages_form" %>

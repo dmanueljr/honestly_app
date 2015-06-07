@@ -1,12 +1,20 @@
-<h4>Your are sending <%= @to_address %></h4>
+<h1>You have <%= pluralize(@address_count, "address") %> for your message to <%= @addresses.first.message.to_name %></h1>
 
 	<% @addresses.each do |address| %>
 	<address>
+		<p class="lead">Message for <strong><%= address.message.to_name %></strong></p>
+		<hr>
 		<%= address.address_1 %><br>
-		<%= address.address_2 if address.address_2 %><br>
-		<%= address.city %>, <%= address.state.upcase %> <%= address.zip_code %><br>
-		<%= link_to 'Show', message_address_path(@message, address) %> <%= link_to 'Edit', edit_address_path(@message, address) %> <%= link_to 'Delete', message_address_path(@message, address),
+		<%= address.city %>, <%= address.state.upcase %> <%= address.zip_code %>
+		<hr>
+		<%= link_to 'Delete', message_address_path(@message, address),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' }, 
+              class: "btn btn-danger" %>
+        <%= link_to 'Edit', edit_address_path(@message, address), class: "btn btn-warning" %> 
+		<%= link_to 'View details', message_address_path(@message, address), class: "btn btn-default" %>	
+		<%= link_to 'Send $3', root_path, class: "btn btn-success" %> 
 	</address>
 	<% end %>
+    <%= link_to 'Add an address', new_message_address_path(@message), class: "btn btn-success btn-lg btn-block" %>
+    <%= link_to 'Go back to your message', message_path(@message), class: "btn btn-default btn-lg btn-block" %>

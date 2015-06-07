@@ -5,13 +5,7 @@ class AddressesController < ApplicationController
   def index
 
   	@addresses = get_message.addresses.all
-    
-    #user prompt for multiple address destinations
-    @to_address = "this card to this address: "
-
-    if @addresses.count > 1
-      @to_address = "a card to each of the following addresses: "
-    end
+    @address_count = @addresses.count
 
   end
 
@@ -32,7 +26,7 @@ class AddressesController < ApplicationController
     # @address.message = Message.find(params[:id])
   	
   	if @address.save
-      redirect_to @address.message
+      redirect_to message_addresses_path
   	else
       flash.now[:error] = @address.errors.full_messages
       render "new"

@@ -1,11 +1,10 @@
 class SessionsController < ApplicationController
 	
 	def new
+		redirect_to messages_path if current_user
 	end
 
 	def show
-	    redirect_to root_path unless session['auth']
-	    @auth = session['auth']
 	end
 
 	def create
@@ -19,10 +18,6 @@ class SessionsController < ApplicationController
 		else
 			render :new
 		end
-
-	    # @auth = request.env['omniauth.auth']
-	    # session['auth'] = @auth
-	    # redirect_to sessions_show_path
 	end
 
 	def destroy

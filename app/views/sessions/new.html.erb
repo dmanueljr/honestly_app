@@ -1,17 +1,19 @@
-<h1>LOG IN!</h1>
+<%= form_for :login, :html => {:class => "form-signin"} do |f| %>
 
-<%= form_for :login do |f| %>
-
+<h1 class="form-signin-heading">Please sign in</h1>
+        
 	<div>
-		<% f.label :email %>
-		<%= f.text_field :email %>
+		<% f.label :email, class: "sr-only" %>
+		<%= f.text_field :email, class: "form-control", placeholder: "Email address", :autofocus => true %>
 	</div>
 	<div>
-		<% f.label :password %>
-		<%= f.password_field :password %>
+		<% f.label :password, class: "sr-only" %>
+		<%= f.password_field :password, class: "form-control", placeholder: "Password" %>
 	</div>
 	<div>
-		<%= f.submit "log in!" %>
+		<%= f.submit "Sign in", class: "btn btn-lg btn-default btn-block" %>
 	</div>
-
 <% end %>
+<div class="msg-box">Don't have an account? <a href="/users/new">Sign up free!</a></div>
+
+

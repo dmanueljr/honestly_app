@@ -1,0 +1,44 @@
+<%= form_for @message, :html => {:class => "form-horizontal"} do |f| %>
+ 
+<div class="msg-box">
+	<div class="form-group">
+	    <%= f.label "To:", class: "col-sm-2 control-label" %>
+	    <div class="col-sm-6">
+	    	<%= f.text_field :to_name, class: "form-control", placeholder: "Name", :autofocus => true %>
+	    </div>
+  	</div>
+ 
+	<div class="form-group">
+	    <%= f.label "Message:", class: "col-sm-2 control-label" %>
+	    <div class="col-sm-6">
+	    	<%= f.text_area :msg, class: "form-control", rows: "5", placeholder: "Keep it real, short and clean. Up to 300 characters." %>
+	    </div>
+	</div>
+
+
+	<div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-6">
+      		<div class="checkbox">
+        		<label>
+        			<%= f.check_box :is_public %> <%= f.label "Check this box if you want to make this message public." %>
+        		</label>
+      		</div>
+    	</div>
+  	</div>
+
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-6">
+	   	   	<%= f.submit class: "btn btn-lg btn-success btn-block" %>
+  		</div>
+  	</div>
+
+	<div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-6">
+   	   		<%= link_to 'Cancel', messages_path, class: "btn btn-lg btn-danger btn-block" %>
+		</div>
+	</div>
+
+</div>
+
+ 
+<% end %>
