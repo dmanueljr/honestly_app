@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   	if @user.save
       flash[:notice] = "Thank you for signing up!"
       session[:user_id] = @user.id.to_s
-  		redirect_to @user
+  		redirect_to how_path
   	else
       flash.now[:error] = @user.errors.full_messages
   		render :new
