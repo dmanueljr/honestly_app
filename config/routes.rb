@@ -49,8 +49,20 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: :sign_out
 
 
-  resources :charges
-  
+  #resources :charges
+
+  #stripe payment
+  get "/charges" => "charges#index", as: :charges
+  post "/charges" => "charges#create"
+  get "/charges/new" => "charges#new", as: :new_charge
+  get "/charges/:id/edit" => "charges#edit", as: :edit_charge
+  get "/charges/:id" => "charges#show", as: :charge
+  get "/charges/:id" => "charges#update"
+  put "/charges/:id" => "charges#update"
+  delete "/charges/:id" => "charges#destroy"
+
+
+
   #omniauth
   # get "/auth/:provider/callback" => "sessions#create"
   # get 'auth/logout' => 'sessions#destroy'
