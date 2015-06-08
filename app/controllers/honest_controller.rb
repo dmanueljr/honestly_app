@@ -7,7 +7,7 @@ class HonestController < ApplicationController
   end
 
   def public
-  	@messages = Message.all
+  	@messages = Message.where(is_public: true)
   end
 
   def contact
