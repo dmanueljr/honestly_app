@@ -53,6 +53,13 @@ gem 'omniauth-google-oauth2', '~> 0.2.6'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 
+ruby '2.1.5'
+
+group :production do
+  gem 'rails_12factor'
+end
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
