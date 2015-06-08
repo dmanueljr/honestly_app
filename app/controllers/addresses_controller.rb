@@ -6,6 +6,7 @@ class AddressesController < ApplicationController
 
   	@addresses = get_message.addresses.all
     @address_count = @addresses.count
+    @message = get_message
 
   end
 

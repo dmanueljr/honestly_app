@@ -1,4 +1,4 @@
-<h1>You have <%= pluralize(@address_count, "address") %> for your message to <%= @addresses.first.message.to_name %></h1>
+<h1>You have <%= pluralize(@address_count, "address") %> for your message to <%= @message.to_name %></h1>
 
 	<% @addresses.each do |address| %>
 	<address>
